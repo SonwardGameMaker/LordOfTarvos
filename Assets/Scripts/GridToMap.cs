@@ -10,7 +10,7 @@ public class GridToMap : MonoBehaviour
     public int heigth = 5;
     public float cellSize = 2f;
 
-    public GameObject testUnit;
+    public UnitMove testUnit;
     public GameObject myPrefab; // то дебагав чи нормально координати передає, знизу закоменчений код
 
     public MyGrid grid;
@@ -110,7 +110,7 @@ public class GridToMap : MonoBehaviour
         Node updatedNode;
 
         // Add tests units
-        updatedNode = new Node(testUnit);
+        updatedNode = new Node(testUnit.gameObject);
         grid.SetValue(0, 0, updatedNode);
         testUnit.transform.Translate(new Vector3(1, 1, testUnit.transform.position.z), Space.World);
 

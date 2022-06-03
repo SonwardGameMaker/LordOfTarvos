@@ -2,15 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+
 public class Controller : MonoBehaviour
 {
     public GameObject grid;
-    private GameObject chosenUnit;
+
+    private int unitMoveNum;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        EndTurn();
     }
 
     // Update is called once per frame
@@ -30,6 +33,11 @@ public class Controller : MonoBehaviour
         //{
         //    grid.GetComponent<GridToMap>().SpawnTestUnit(GetMouseWorldPosition());
         //}
+    }
+
+    public void EndTurn()
+    {
+        unitMoveNum = Random.Range(1, 6);
     }
 
     private Vector3 GetMouseWorldPosition()
