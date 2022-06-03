@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum NodeFill {Empty, Environment, Unit};
+public enum NodeFill {Empty, Unit, Wall, Gate, Stone, Tree, Water, Fire};
 
 public class Node
 {

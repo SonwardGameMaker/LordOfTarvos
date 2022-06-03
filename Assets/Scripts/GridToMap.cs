@@ -13,7 +13,7 @@ public class GridToMap : MonoBehaviour
     public GameObject testUnit;
     public GameObject myPrefab; // то дебагав чи нормально координати передає, знизу закоменчений код
 
-    private MyGrid grid;
+    public MyGrid grid;
     private GameObject chosenUnit;
     private int x1, y1, x2, y2;
 
@@ -27,9 +27,7 @@ public class GridToMap : MonoBehaviour
     {
         grid = new MyGrid(wight, heigth, cellSize);
 
-        Node updatedNode = new Node(testUnit);
-        grid.SetValue(0, 0, updatedNode);
-        testUnit.transform.Translate(new Vector3(1, 1, testUnit.transform.position.z), Space.World);
+        DebugInitialize();
 
         fieldData = new FieldData(fromGlobalMap.GetComponent<GlobalDataSim>().GetData());
 
@@ -106,5 +104,35 @@ public class GridToMap : MonoBehaviour
         grid.GetXY(mousePosition, out x2, out y2);
         Debug.Log("Grid Mouse Position: " + CellNumToWorldPosition(x2, y2, mousePosition.z));
         Instantiate(myPrefab, CellNumToWorldPosition(x2, y2, 0), myPrefab.transform.rotation);
+    }
+    public void DebugInitialize()
+    {
+        Node updatedNode;
+
+        // Add tests units
+        updatedNode = new Node(testUnit);
+        grid.SetValue(0, 0, updatedNode);
+        testUnit.transform.Translate(new Vector3(1, 1, testUnit.transform.position.z), Space.World);
+
+        // Add environment
+        updatedNode = new Node();
+        updatedNode.status = NodeFill.Stone;
+        grid.SetValue(5, 2, updatedNode);
+
+        updatedNode = new Node();
+        updatedNode.status = NodeFill.Fire;
+        grid.SetValue(6, 4, updatedNode);
+
+        updatedNode = new Node();
+        updatedNode.status = NodeFill.Water;
+        grid.SetValue(7, 1, updatedNode);
+
+        updatedNode = new Node();
+        updatedNode.status = NodeFill.Tree;
+        grid.SetValue(5, 7, updatedNode);
+
+        updatedNode = new Node();
+        updatedNode.status = NodeFill.Water;
+        grid.SetValue(7, 2, updatedNode);
     }
 }
