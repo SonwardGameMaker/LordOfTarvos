@@ -33,7 +33,7 @@ public class GridToMap : MonoBehaviour
 
         GetComponent<EnvGraphics>().SetTerrain(fieldData.terrain);
 
-        FieldDataLog();
+        //FieldDataLog();
     }
 
     // Update is called once per frame
@@ -46,14 +46,17 @@ public class GridToMap : MonoBehaviour
     public void SelectUnit(Vector3 mousePosition)
     {
         Node node = grid.GetValue(mousePosition);
-        grid.GetXY(mousePosition, out x1, out y1);
-        if (node.status == NodeFill.Unit)
+        if (node != null)
         {
-            Debug.Log("Unit chosed");
-            chosenUnit = node.unitIn;
+            grid.GetXY(mousePosition, out x1, out y1);
+            if (node.status == NodeFill.Unit)
+            {
+                //Debug.Log("Unit chosed");
+                chosenUnit = node.unitIn;
+            }
         }
     }
-    public void MoveUnit(Vector3 mousePosition)
+    public void MoveUnit(Vector3 mousePosition, Controller controller)
     {
         if (chosenUnit != null)
         {
@@ -72,7 +75,25 @@ public class GridToMap : MonoBehaviour
 
                 grid.SetValue(x1, y1, new Node());
                 chosenUnit = null;
+
+                controller.DecreaseMoveNum();
             }
+        }
+    }
+    public void AddUnit(Vector3 mousePosition)
+    {
+        int x, y;
+
+        Node node = grid.GetValue(mousePosition);
+        if (node.status == NodeFill.Empty)
+        {
+            Node updatedNode = new Node();
+            updatedNode.status = NodeFill.Unit;
+            grid.GetXY(mousePosition, out x, out y);
+
+            updatedNode.unitIn = Instantiate(myPrefab, CellNumToWorldPosition(x, y, 0f), transform.rotation);
+            grid.SetValue(x, y, updatedNode);
+
         }
     }
 

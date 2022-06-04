@@ -5,6 +5,7 @@ using UnityEngine;
 public class UnitMove : MonoBehaviour
 {
     public float speed = 100.0f;
+    public bool wasMoved = false;
 
     private bool mustMove = false;
     private Vector3 destinationPoin;
@@ -29,5 +30,6 @@ public class UnitMove : MonoBehaviour
     {
         destinationPoin = destPoint;
         mustMove = true;
+        wasMoved = true;
     }
 }

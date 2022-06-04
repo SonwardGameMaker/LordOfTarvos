@@ -58,4 +58,9 @@ public class FieldData
 
         Initialize();
     }
+
+    public void ResetMoves() // позначає всіх юнітів які таких, що можуть ходити
+    {
+
+    }
 }
