@@ -6,7 +6,7 @@ public class GlobalDataSim : MonoBehaviour
 {
     public Dictionary<WeatherType, int> weatherChance;
     public TerrainType terrain = TerrainType.Grass;
-    public bool isSiege; // чиќблога, не знаю чи нормално переклав
+    public bool isSiege; // чи облога
 
     public List<GameObject> armyPlayer1;
     public List<GameObject> armyPlayer2;

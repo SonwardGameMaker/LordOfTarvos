@@ -877,7 +877,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   terrain: 0
   isSiege: 0
-  armyPlayer1: []
+  armyPlayer1:
+  - {fileID: 4649081872226560220, guid: a915304fdc27f1e4bad589311ba053e6, type: 3}
+  - {fileID: 4649081872226560220, guid: a915304fdc27f1e4bad589311ba053e6, type: 3}
+  - {fileID: 4649081872226560220, guid: a915304fdc27f1e4bad589311ba053e6, type: 3}
+  - {fileID: 4649081872226560220, guid: a915304fdc27f1e4bad589311ba053e6, type: 3}
   armyPlayer2: []
   p1LazaretExtend: 1
   p2LazaretExetnd: 0

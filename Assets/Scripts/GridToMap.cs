@@ -18,6 +18,7 @@ public class GridToMap : MonoBehaviour
     private int x1, y1, x2, y2;
 
     private FieldData fieldData;
+    private int unitInArmyP1 = 0;
 
     // Debug
     public WeatherType weather;
@@ -91,7 +92,8 @@ public class GridToMap : MonoBehaviour
             updatedNode.status = NodeFill.Unit;
             grid.GetXY(mousePosition, out x, out y);
 
-            updatedNode.unitIn = Instantiate(myPrefab, CellNumToWorldPosition(x, y, 0f), transform.rotation);
+            //updatedNode.unitIn = Instantiate(myPrefab, CellNumToWorldPosition(x, y, 0f), transform.rotation);
+            updatedNode.unitIn = fieldData.armyPlayer1[unitInArmyP1];
             grid.SetValue(x, y, updatedNode);
 
         }
